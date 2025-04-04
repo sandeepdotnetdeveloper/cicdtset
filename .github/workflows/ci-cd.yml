@@ -15,11 +15,11 @@ jobs:
     steps:
       # Checkout the code from GitHub repository
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2  # Correctly formatted URL
 
       # Setup .NET SDK
       - name: Setup .NET
-        uses: actions/setup-dotnet@v2
+        uses: actions/setup-dotnet@v2  # Correctly formatted URL
         with:
           dotnet-version: '8.0'  # Set the .NET version for your app
 
@@ -35,9 +35,9 @@ jobs:
       - name: Publish the application
         run: dotnet publish --configuration Release --output ./publish
 
-      # Use a manual URL for actions/upload-artifact
-      - name: Upload published files (Manual URL)
-        uses: https://github.com/actions/upload-artifact@v2  # Full URL to the action
+      # Upload the published files using the corrected action reference
+      - name: Upload published files
+        uses: actions/upload-artifact@v2  # Corrected URL for upload-artifact
         with:
           name: myapp-publish-artifact
           path: ./publish
