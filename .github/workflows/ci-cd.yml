@@ -1,0 +1,41 @@
+﻿name: CI/CD Pipeline for ASP.NET Core
+
+# Trigger on push or pull request events
+on:
+  push:
+    branches:
+      - main  # Trigger for pushes to main branch
+  pull_request:
+    branches:
+      - main  # Trigger for PRs to the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Use the latest Ubuntu runner
+
+    steps:
+      # Checkout the code from GitHub repository
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Setup .NET SDK
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '8.0'  # Set the .NET version for your app
+
+      # Restore dependencies
+      - name: Restore dependencies
+        run: dotnet restore
+
+      # Build the application
+      - name: Build the application
+        run: dotnet build --configuration Release
+
+
+
+      # Publish the application
+      - name: Publish the application
+        run: dotnet publish --configuration Release --output ./publish
+
+  
