@@ -37,7 +37,7 @@ jobs:
 
       # Upload the published files as an artifact
       - name: Upload published files
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3  # Updated version
         with:
           name: myapp-publish-artifact
           path: ./publish
