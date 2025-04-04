@@ -35,9 +35,17 @@ jobs:
       - name: Publish the application
         run: dotnet publish --configuration Release --output ./publish
 
-      # Upload the published files as an artifact (using v2)
-      - name: Upload published files
-        uses: actions/upload-artifact@v2  # Using stable v2 version
+      # Use a manual URL for actions/upload-artifact
+      - name: Upload published files (Manual URL)
+        uses: https://github.com/actions/upload-artifact@v2  # Full URL to the action
         with:
           name: myapp-publish-artifact
           path: ./publish
+
+      # Alternatively, upload files to GitHub Release (if the previous method fails)
+      - name: Upload to GitHub Release (Alternative method)
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ./publish/**
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
