@@ -1,13 +1,12 @@
 ﻿name: CI/CD Pipeline for ASP.NET Core
 
-# Trigger on push or pull request events
 on:
   push:
     branches:
-      - master  # Trigger for pushes to main branch
+      - master  # Trigger for pushes to master branch
   pull_request:
     branches:
-      - master  # Trigger for PRs to the main branch
+      - master  # Trigger for PRs to the master branch
 
 jobs:
   build:
@@ -32,12 +31,13 @@ jobs:
       - name: Build the application
         run: dotnet build --configuration Release
 
-      # Run tests
-      #- name: Run unit tests
-      #  run: dotnet test --configuration Release
-
       # Publish the application
       - name: Publish the application
         run: dotnet publish --configuration Release --output ./publish
 
-  
+      # Upload the published files as an artifact
+      - name: Upload published files
+        uses: actions/upload-artifact@v2
+        with:
+          name: myapp-publish-artifact
+          path: ./publish
