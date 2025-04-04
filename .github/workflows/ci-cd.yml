@@ -4,10 +4,10 @@
 on:
   push:
     branches:
-      - main  # Trigger for pushes to main branch
+      - master  # Trigger for pushes to main branch
   pull_request:
     branches:
-      - main  # Trigger for PRs to the main branch
+      - master  # Trigger for PRs to the main branch
 
 jobs:
   build:
