@@ -32,7 +32,9 @@ jobs:
       - name: Build the application
         run: dotnet build --configuration Release
 
-
+      # Run tests
+      #- name: Run unit tests
+      #  run: dotnet test --configuration Release
 
       # Publish the application
       - name: Publish the application
