@@ -35,9 +35,9 @@ jobs:
       - name: Publish the application
         run: dotnet publish --configuration Release --output ./publish
 
-      # Upload the published files as an artifact
+      # Upload the published files as an artifact (using v2)
       - name: Upload published files
-        uses: actions/upload-artifact@v3  # Updated version
+        uses: actions/upload-artifact@v2  # Using stable v2 version
         with:
           name: myapp-publish-artifact
           path: ./publish
