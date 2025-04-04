@@ -35,9 +35,9 @@ jobs:
       - name: Publish the application
         run: dotnet publish --configuration Release --output ./publish
 
-      # Upload the published files using the corrected action reference
+      # Upload the published files using the full URL
       - name: Upload published files
-        uses: actions/upload-artifact@v2  # Corrected URL for upload-artifact
+        uses: https://github.com/actions/upload-artifact@v2  # Full URL to the action
         with:
           name: myapp-publish-artifact
           path: ./publish
